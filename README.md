@@ -214,6 +214,102 @@ Ensure that unauthenticated users cannot access the API.
 
 ---
 
+### **TC NFR 9: System Performance Under Load**  
+**Scenario**  
+Ensure OpenSearch can handle bulk data insertions and searches efficiently.  
+
+**Given**  
+- OpenSearch is running.  
+- 1 lakh records are stored in the database.  
+
+**When**  
+- The system performs bulk read/write operations.  
+
+**Then**  
+- OpenSearch should respond within acceptable latency limits (e.g., query response time < 500ms).  
+- No crashes or performance degradation should occur.  
+
+**Testing Outputs**  
+(Response times from load tests)  
+
+---
+
+### **TC NFR 2: API Response Time Validation**  
+**Scenario**  
+Check if API responses are within an acceptable range.  
+
+**Given**  
+- The backend server is running.  
+- OpenSearch is accessible.  
+
+**When**  
+- API requests for CRUD operations are triggered.  
+
+**Then**  
+- API should respond within 200-500ms under normal load.  
+- Response should not exceed 1s even under peak load.  
+
+**Testing Outputs**  
+(API response times recorded from testing tools)  
+
+---
+
+### **TC NFR 3: Security & Access Control**  
+**Scenario**  
+Ensure unauthorized users cannot access API endpoints.  
+
+**Given**  
+- A user is not authenticated.  
+
+**When**  
+- The user tries to access CRUD API endpoints without logging in.  
+
+**Then**  
+- The API should return 401 Unauthorized.  
+- Sensitive data should not be exposed in error responses.  
+
+**Testing Outputs**  
+(API logs showing failed access attempts)  
+
+---
+
+### **TC NFR 4: Scalability Testing**  
+**Scenario**  
+Ensure the system can scale as data volume grows.  
+
+**Given**  
+- The system contains 1 lakh records.  
+- Load balancer is configured.  
+
+**When**  
+- The number of records increases to 10 lakh or more.  
+
+**Then**  
+- OpenSearch should continue functioning without errors.  
+- Performance degradation should be minimal.  
+
+**Testing Outputs**  
+(Logs showing system performance under heavy load)  
+
+---
+
+### **TC NFR 5: Fault Tolerance & Recovery**  
+**Scenario**  
+Ensure the system can recover from failures.  
+
+**Given**  
+- The OpenSearch container crashes unexpectedly.  
+
+**When**  
+- The container is restarted.  
+
+**Then**  
+- OpenSearch should recover without data loss.  
+- CRUD operations should resume normally.  
+
+**Testing Outputs**  
+(Logs showing successful recovery from failure)  
+
 ## **Conclusion**  
 This test plan ensures that **OpenSearch is deployed correctly, data is stored and retrieved properly, authentication works, and the system performs well under load**.  
 
