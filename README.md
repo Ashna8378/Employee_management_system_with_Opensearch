@@ -32,7 +32,7 @@ This project sets up **OpenSearch** using **Podman** (a container system), adds 
   - **TC 7.4**: Delete Operation  
 - **TC 8**: API Security & Authentication Check  
 - **TC 9**: OpenSearch Query Performance Testing
-- **NFR Test Cases**: OpenSearch Query Performance Testing
+- **NFR Test Cases**
 
 
 ---
