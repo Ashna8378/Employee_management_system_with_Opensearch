@@ -214,7 +214,7 @@ Ensure that unauthenticated users cannot access the API.
 
 ---
 
-### **TC NFR 9: System Performance Under Load**  
+### **TC NFR 1: System Performance Under Load**  
 **Scenario**  
 Ensure OpenSearch can handle bulk data insertions and searches efficiently.  
 
