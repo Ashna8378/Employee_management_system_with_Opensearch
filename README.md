@@ -1,5 +1,3 @@
-!(https://raw.githubusercontent.com/Ashna8378/Podman_opensearch_crud_project/images/flowchart.png)
-
 
 # **TEST CASES - OpenSearch CRUD System**  
 
