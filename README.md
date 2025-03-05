@@ -1,5 +1,4 @@
 # **TEST CASES - OpenSearch CRUD System**  
-images/flowchart.png
 
 ## **Submitted By**  
 **Ashna Dubey**  
