@@ -1,13 +1,10 @@
 
 # **TEST CASES - OpenSearch CRUD System**  
-<style>
-  img {
-    width: 40%;
-    height:20%;
 
-  }
-</style>
 ![image1](images/flowchart.png)
+
+![image1](images/architecture_diagram.png)
+
 
 ## **Submitted By**  
 **Ashna Dubey**  
