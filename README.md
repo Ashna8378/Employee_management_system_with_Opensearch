@@ -1,6 +1,13 @@
 
 # **TEST CASES - OpenSearch CRUD System**  
-![flowchart](https://github.com/user-attachments/assets/e953c590-f34f-47d4-808e-27f023339262)
+<style>
+  img {
+    width: 40%;
+    height:20%;
+
+  }
+</style>
+![image1](images/flowchart.png)
 
 ## **Submitted By**  
 **Ashna Dubey**  
