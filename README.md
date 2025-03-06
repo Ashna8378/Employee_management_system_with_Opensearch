@@ -7,7 +7,9 @@
 
   }
 </style>
-![image1](images/flowchart.png)
+![image1](images/flowchart_diagram.png)
+
+![image1](images/architecture_diagram.png)
 
 ## **Submitted By**  
 **Ashna Dubey**  
