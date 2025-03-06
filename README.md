@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # **TEST CASES - OpenSearch CRUD System**  
 <style>
@@ -328,3 +329,5 @@ This test plan ensures that **OpenSearch is deployed correctly, data is stored a
 
 
 
+=======
+>>>>>>> eb5c99a (added approach_paper.md file)
