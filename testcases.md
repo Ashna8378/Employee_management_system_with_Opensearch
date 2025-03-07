@@ -1,10 +1,7 @@
-
 # **TEST CASES - OpenSearch CRUD System**  
 
-![image1](images/flowchart.png)
-
-![image1](images/architecture_diagram.png)
-
+![Flowchart](images/flowchart.png)  
+![Architecture Diagram](images/architecture_diagram.png)  
 
 ## **Submitted By**  
 **Ashna Dubey**  
@@ -18,12 +15,12 @@
 ---
 
 ## **Goal**  
-This project sets up **OpenSearch** using **Podman** (a container system), adds **1 lakh records** using a **Python script**, and provides a **web-based CRUD interface** built with **Express.js**. Users must **log in** before using CRUD features.  
+This project sets up **OpenSearch** using **Podman** (a container system), inserts **100,000 records** using a **Python script**, and provides a **web-based CRUD interface** built with **Express.js**. Users must **log in** before accessing CRUD functionalities.  
 
 ---
 
 ## **Table of Contents**  
-- **TC 1**: Setgup OpenSearch in Podman  
+- **TC 1**: Set up OpenSearch in Podman  
 - **TC 2**: Verify OpenSearch Cluster Health  
 - **TC 3**: Insert Bulk Data into OpenSearch  
 - **TC 4**: Validate Data Insertion in OpenSearch  
@@ -35,25 +32,24 @@ This project sets up **OpenSearch** using **Podman** (a container system), adds 
   - **TC 7.3**: Update Operation  
   - **TC 7.4**: Delete Operation  
 - **TC 8**: API Security & Authentication Check  
-- **TC 9**: OpenSearch Query Performance Testing
-- **NFR Test Cases**
-
+- **TC 9**: OpenSearch Query Performance Testing  
+- **NFR Test Cases**  
 
 ---
 
 ## **Test Environment**  
-- **Platform**: Podman (to run OpenSearch in a container)  
+- **Platform**: Podman (for running OpenSearch in a container)  
 - **Backend**: Express.js (handles API requests)  
 - **Database**: OpenSearch  
-- **Frontend**: A web interface for CRUD operations  
+- **Frontend**: Web interface for CRUD operations  
 
 ---
 
 ## **Test Cases**  
 
-### **TC 1: Setup OpenSearch in Podman**  
+### **TC 1: Set Up OpenSearch in Podman**  
 **Scenario**  
-Check if OpenSearch is running in a Podman container.  
+Ensure OpenSearch is running inside a Podman container.  
 
 **Given**  
 - Podman is installed on the system.  
@@ -62,35 +58,35 @@ Check if OpenSearch is running in a Podman container.
 - The command to download and run OpenSearch in Podman is executed.  
 
 **Then**  
-- OpenSearch container should start successfully.  
-- Running `podman ps` should show OpenSearch as active.  
+- The OpenSearch container should start successfully.  
+- Running `podman ps` should display OpenSearch as active.  
 
 **Testing Outputs**  
-(Screenshot showing running container)  
+(Screenshot showing the running container)  
 
 ---
 
 ### **TC 2: Verify OpenSearch Cluster Health**  
 **Scenario**  
-Check if OpenSearch is working properly.  
+Check if OpenSearch is functioning properly.  
 
 **Given**  
-- OpenSearch container is running.  
+- OpenSearch is running in a container.  
 
 **When**  
 - The `GET /_cluster/health` API is called.  
 
 **Then**  
-- The API should return `"green"` or `"yellow"` status, meaning OpenSearch is healthy.  
+- The API should return a `"green"` or `"yellow"` status, indicating that OpenSearch is healthy.  
 
 **Testing Outputs**  
-(JSON response from OpenSearch cluster health check)  
+(JSON response from the OpenSearch cluster health check)  
 
 ---
 
 ### **TC 3: Insert Bulk Data into OpenSearch**  
 **Scenario**  
-Make sure 1 lakh records can be inserted using a Python script.  
+Ensure 100,000 records can be inserted using a Python script.  
 
 **Given**  
 - OpenSearch is running.  
@@ -100,8 +96,8 @@ Make sure 1 lakh records can be inserted using a Python script.
 - The script is executed to insert data.  
 
 **Then**  
-- OpenSearch should successfully store all the records.  
-- No errors should occur during the process.  
+- OpenSearch should successfully store all records.  
+- No errors should occur during the insertion process.  
 
 **Testing Outputs**  
 (Log of inserted records and API response)  
@@ -110,7 +106,7 @@ Make sure 1 lakh records can be inserted using a Python script.
 
 ### **TC 4: Validate Data Insertion in OpenSearch**  
 **Scenario**  
-Check if OpenSearch correctly stored all 1 lakh records.  
+Verify that OpenSearch correctly stores all 100,000 records.  
 
 **Given**  
 - Bulk data insertion was successful.  
@@ -122,7 +118,7 @@ Check if OpenSearch correctly stored all 1 lakh records.
 - The API should return **100,000** records.  
 
 **Testing Outputs**  
-(JSON response showing total records)  
+(JSON response showing the total records)  
 
 ---
 
@@ -134,32 +130,32 @@ Ensure users must log in before using CRUD operations.
 - A user opens the web interface.  
 
 **When**  
-- The user tries to access CRUD operations **without logging in**.  
+- The user attempts to access CRUD operations **without logging in**.  
 
 **Then**  
 - The system should **redirect the user to the login page**.  
 
 **Testing Outputs**  
-(Screenshot showing redirection to login page)  
+(Screenshot showing redirection to the login page)  
 
 ---
 
 ### **TC 6: Verify Authentication Flow**  
 **Scenario**  
-Check if only logged-in users can access CRUD features.  
+Ensure only authenticated users can access CRUD functionalities.  
 
 **Given**  
 - A user exists with valid credentials.  
 
 **When**  
-- The user enters their credentials and logs in.  
+- The user enters valid credentials and logs in.  
 
 **Then**  
-- The system should allow access to CRUD operations.  
-- API should return a session token.  
+- The system should grant access to CRUD operations.  
+- The API should return a session token.  
 
 **Testing Outputs**  
-(JSON response with authentication token)  
+(JSON response containing the authentication token)  
 
 ---
 
@@ -186,7 +182,7 @@ Ensure users can add new records via the web interface.
 
 #### **TC 7.2: Read Operation**  
 **Scenario**  
-Ensure users can view stored records.  
+Ensure users can retrieve stored records.  
 
 **Given**  
 - OpenSearch contains records.  
@@ -210,13 +206,13 @@ Ensure that unauthenticated users cannot access the API.
 - The user is **not logged in**.  
 
 **When**  
-- The user tries to access an API endpoint directly.  
+- The user attempts to access an API endpoint directly.  
 
 **Then**  
 - The API should return **401 Unauthorized**.  
 
 **Testing Outputs**  
-(JSON error response from API)  
+(JSON error response from the API)  
 
 ---
 
@@ -226,7 +222,7 @@ Ensure OpenSearch can handle bulk data insertions and searches efficiently.
 
 **Given**  
 - OpenSearch is running.  
-- 1 lakh records are stored in the database.  
+- 100,000 records are stored in the database.  
 
 **When**  
 - The system performs bulk read/write operations.  
@@ -242,18 +238,18 @@ Ensure OpenSearch can handle bulk data insertions and searches efficiently.
 
 ### **TC NFR 2: API Response Time Validation**  
 **Scenario**  
-Check if API responses are within an acceptable range.  
+Ensure API response times are within an acceptable range.  
 
 **Given**  
 - The backend server is running.  
 - OpenSearch is accessible.  
 
 **When**  
-- API requests for CRUD operations are triggered.  
+- API requests for CRUD operations are executed.  
 
 **Then**  
 - API should respond within 200-500ms under normal load.  
-- Response should not exceed 1s even under peak load.  
+- Response time should not exceed 1s, even under peak load.  
 
 **Testing Outputs**  
 (API response times recorded from testing tools)  
@@ -268,10 +264,10 @@ Ensure unauthorized users cannot access API endpoints.
 - A user is not authenticated.  
 
 **When**  
-- The user tries to access CRUD API endpoints without logging in.  
+- The user attempts to access CRUD API endpoints without logging in.  
 
 **Then**  
-- The API should return 401 Unauthorized.  
+- The API should return **401 Unauthorized**.  
 - Sensitive data should not be exposed in error responses.  
 
 **Testing Outputs**  
@@ -281,14 +277,14 @@ Ensure unauthorized users cannot access API endpoints.
 
 ### **TC NFR 4: Scalability Testing**  
 **Scenario**  
-Ensure the system can scale as data volume grows.  
+Ensure the system can scale as data volume increases.  
 
 **Given**  
-- The system contains 1 lakh records.  
-- Load balancer is configured.  
+- The system contains 100,000 records.  
+- A load balancer is configured.  
 
 **When**  
-- The number of records increases to 10 lakh or more.  
+- The number of records increases to 1 million or more.  
 
 **Then**  
 - OpenSearch should continue functioning without errors.  
@@ -299,27 +295,5 @@ Ensure the system can scale as data volume grows.
 
 ---
 
-### **TC NFR 5: Fault Tolerance & Recovery**  
-**Scenario**  
-Ensure the system can recover from failures.  
-
-**Given**  
-- The OpenSearch container crashes unexpectedly.  
-
-**When**  
-- The container is restarted.  
-
-**Then**  
-- OpenSearch should recover without data loss.  
-- CRUD operations should resume normally.  
-
-**Testing Outputs**  
-(Logs showing successful recovery from failure)  
-
-
-
-## **Conclusion**  
-This test plan ensures that **OpenSearch is deployed correctly, data is stored and retrieved properly, authentication works, and the system performs well under load**.  
-
-
-
+### **Conclusion**  
+This test plan ensures that **OpenSearch is deployed correctly, data is stored and retrieved accurately, authentication works, and the system performs well under load**.  
