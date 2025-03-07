@@ -10,10 +10,10 @@
 **Ashna Dubey**  
 
 ## **Submitted To**  
-**Vipin Sir**  
+**Vipin Tripathi**  
 
 ## **Reviewer Name**  
-**Manmeet Ma'am**  
+**Manmeet Narang**  
 
 ---
 
