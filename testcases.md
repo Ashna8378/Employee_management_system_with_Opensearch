@@ -1,8 +1,5 @@
 # **TEST CASES - OpenSearch CRUD System**  
 
-![Flowchart](images/flowchart.png)  
-![Architecture Diagram](images/architecture_diagram.png)  
-
 ## **Submitted By**  
 **Ashna Dubey**  
 
