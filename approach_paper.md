@@ -25,7 +25,7 @@ We propose using a containerized environment with Podman to set up OpenSearch wh
 
 ![image1](images/architecture_diagram.png)
 
-### 3.2. Description
+### 3.2. Description 
 This approach involves:
 - Setting up OpenSearch in a container using Podman.
 - Using a Python script to insert 100,000 records into the database.

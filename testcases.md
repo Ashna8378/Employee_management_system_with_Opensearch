@@ -1,12 +1,12 @@
 # **TEST CASES - OpenSearch CRUD System**  
 
-## **Submitted By**  
+### **Submitted By**  
 **Ashna Dubey**  
 
-## **Submitted To**  
+### **Submitted To**  
 **Vipin Tripathi**  
 
-## **Reviewer Name**  
+### **Reviewer Name**  
 **Manmeet Narang**  
 
 ---
@@ -55,8 +55,8 @@ Ensure OpenSearch is running inside a Podman container.
 - The command to download and run OpenSearch in Podman is executed.  
 
 **Then**  
-- The OpenSearch container should start successfully.  
-- Running `podman ps` should display OpenSearch as active.  
+- The OpenSearch container starts successfully.  
+- Running `podman ps` displays OpenSearch as active.  
 
 **Testing Outputs**  
 (Screenshot showing the running container)  
@@ -74,7 +74,7 @@ Check if OpenSearch is functioning properly.
 - The `GET /_cluster/health` API is called.  
 
 **Then**  
-- The API should return a `"green"` or `"yellow"` status, indicating that OpenSearch is healthy.  
+- The API returns a `"green"` or `"yellow"` status, indicating that OpenSearch is healthy.  
 
 **Testing Outputs**  
 (JSON response from the OpenSearch cluster health check)  
@@ -83,7 +83,7 @@ Check if OpenSearch is functioning properly.
 
 ### **TC 3: Insert Bulk Data into OpenSearch**  
 **Scenario**  
-Ensure 100,000 records can be inserted using a Python script.  
+Ensure 100,000 records have inserted using a Python script.  
 
 **Given**  
 - OpenSearch is running.  
@@ -93,8 +93,8 @@ Ensure 100,000 records can be inserted using a Python script.
 - The script is executed to insert data.  
 
 **Then**  
-- OpenSearch should successfully store all records.  
-- No errors should occur during the insertion process.  
+- OpenSearch successfully stores all records.  
+- No errors occurs during the insertion process.  
 
 **Testing Outputs**  
 (Log of inserted records and API response)  
@@ -112,7 +112,7 @@ Verify that OpenSearch correctly stores all 100,000 records.
 - The `GET /index_name/_count` API is called.  
 
 **Then**  
-- The API should return **100,000** records.  
+- The API returns **100,000** records.  
 
 **Testing Outputs**  
 (JSON response showing the total records)  
@@ -130,7 +130,7 @@ Ensure users must log in before using CRUD operations.
 - The user attempts to access CRUD operations **without logging in**.  
 
 **Then**  
-- The system should **redirect the user to the login page**.  
+- The system **redirect the user to the login page**.  
 
 **Testing Outputs**  
 (Screenshot showing redirection to the login page)  
@@ -148,8 +148,8 @@ Ensure only authenticated users can access CRUD functionalities.
 - The user enters valid credentials and logs in.  
 
 **Then**  
-- The system should grant access to CRUD operations.  
-- The API should return a session token.  
+- The system grant access to CRUD operations.  
+- The API returns a session token.  
 
 **Testing Outputs**  
 (JSON response containing the authentication token)  
@@ -160,7 +160,7 @@ Ensure only authenticated users can access CRUD functionalities.
 
 #### **TC 7.1: Create Operation**  
 **Scenario**  
-Ensure users can add new records via the web interface.  
+Ensure user adds new records via the web interface.  
 
 **Given**  
 - The user is logged in.  
@@ -169,8 +169,8 @@ Ensure users can add new records via the web interface.
 - The user submits a new entry using the web interface.  
 
 **Then**  
-- The data should be stored in OpenSearch.  
-- The API should return a **success response (201 Created)**.  
+- The data stored in OpenSearch.  
+- The API returns a **success response (201 Created)**.  
 
 **Testing Outputs**  
 (Screenshot of API response & UI confirmation)  
@@ -179,7 +179,7 @@ Ensure users can add new records via the web interface.
 
 #### **TC 7.2: Read Operation**  
 **Scenario**  
-Ensure users can retrieve stored records.  
+Ensure user retrieves stored records.  
 
 **Given**  
 - OpenSearch contains records.  
@@ -188,7 +188,7 @@ Ensure users can retrieve stored records.
 - The user searches for a specific record.  
 
 **Then**  
-- The system should fetch and display the correct record.  
+- The system fetches and display the correct record.  
 
 **Testing Outputs**  
 (JSON response with search results)  
@@ -206,7 +206,7 @@ Ensure that unauthenticated users cannot access the API.
 - The user attempts to access an API endpoint directly.  
 
 **Then**  
-- The API should return **401 Unauthorized**.  
+- The API returns **401 Unauthorized**.  
 
 **Testing Outputs**  
 (JSON error response from the API)  
@@ -225,8 +225,8 @@ Ensure OpenSearch can handle bulk data insertions and searches efficiently.
 - The system performs bulk read/write operations.  
 
 **Then**  
-- OpenSearch should respond within acceptable latency limits (e.g., query response time < 500ms).  
-- No crashes or performance degradation should occur.  
+- OpenSearch responds within acceptable latency limits (e.g., query response time < 500ms).  
+- No crashes or performance degradation occurs.  
 
 **Testing Outputs**  
 (Response times from load tests)  
@@ -245,8 +245,8 @@ Ensure API response times are within an acceptable range.
 - API requests for CRUD operations are executed.  
 
 **Then**  
-- API should respond within 200-500ms under normal load.  
-- Response time should not exceed 1s, even under peak load.  
+- API responds within 200-500ms under normal load.  
+- Response time shouldn't exceed 1s, even under peak load.  
 
 **Testing Outputs**  
 (API response times recorded from testing tools)  
@@ -264,8 +264,8 @@ Ensure unauthorized users cannot access API endpoints.
 - The user attempts to access CRUD API endpoints without logging in.  
 
 **Then**  
-- The API should return **401 Unauthorized**.  
-- Sensitive data should not be exposed in error responses.  
+- The API returns **401 Unauthorized**.  
+- Sensitive data will not be exposed in error responses.  
 
 **Testing Outputs**  
 (API logs showing failed access attempts)  
@@ -284,12 +284,11 @@ Ensure the system can scale as data volume increases.
 - The number of records increases to 1 million or more.  
 
 **Then**  
-- OpenSearch should continue functioning without errors.  
-- Performance degradation should be minimal.  
+- OpenSearch continue functioning without errors.  
+- Performance degradation be minimal.  
 
 **Testing Outputs**  
 (Logs showing system performance under heavy load)  
-
 
 
 ---
