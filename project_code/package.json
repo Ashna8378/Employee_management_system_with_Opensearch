@@ -20,12 +20,10 @@
   },
   "homepage": "https://github.com/Ashna8378/Opensearch_Crud#readme",
   "dependencies": {
+    "@opensearch-project/opensearch": "^3.4.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "nodemon": "^3.1.9"
   }
 }
-
-
-
-
