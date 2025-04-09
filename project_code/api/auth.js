@@ -59,3 +59,4 @@ auth.post("/register", async (req, res) => {
 });
 
 export { auth };
+
