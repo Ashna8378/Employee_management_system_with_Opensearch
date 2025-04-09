@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     const row = document.createElement("tr");
 
                     row.innerHTML = `
-                        <td>${emp.name}</td>
+                        <td>${emp.emp_name}</td>
                         <td>${emp.age}</td>
                         <td>${emp.email}</td>
                         <td>

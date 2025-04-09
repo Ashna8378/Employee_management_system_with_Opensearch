@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .register-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            text-align: left;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: darkgreen;
+        }
+
+        p {
+            margin-top: 15px;
+        }
+
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="register-container">
+        <h2>Register</h2>
+        <form id="register-form">
+            <label for="name">Full Name:</label>
+            <input id="name" type="text">
+            <p id="name-error" class="error"></p>
+
+            <label for="email">Email:</label>
+            <input id="email" type="text">
+            <p id="email-error" class="error"></p>
+
+            <label for="password">Password:</label>
+            <input id="password" type="password">
+            <p id="password-error" class="error"></p>
+
+            <button type="submit">Register</button>
+        </form>
+        
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+
+    <script>
+        document.getElementById("register-form").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get input values
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value.trim();
+
+            // Get error elements
+            let nameError = document.getElementById("name-error");
+            let emailError = document.getElementById("email-error");
+            let passwordError = document.getElementById("password-error");
+
+            // Reset errors
+            nameError.textContent = "";
+            emailError.textContent = "";
+            passwordError.textContent = "";
+
+            let isValid = true;
+
+            // Validate name
+            if (name === "") {
+                nameError.textContent = "Full name is required.";
+                isValid = false;
+            }
+
+            // Validate email
+            if (email === "") {
+                emailError.textContent = "Email is required.";
+                isValid = false;
+            }
+
+            // Validate password
+            if (password === "") {
+                passwordError.textContent = "Password is required.";
+                isValid = false;
+            }
+
+            if (!isValid) return; // Stop if validation fails
+
+            try {
+                const response = await fetch("http://localhost:5000/auth/register", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ name, email, password })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert("Registration successful! You can now login.");
+                    window.location.href = "/"; // Redirect to login page
+                } else {
+                    alert(result.error || "Registration failed.");
+                }
+            } catch (error) {
+                alert("Error connecting to server.");
+            }
+        });
+    </script>
+
+</body>
+</html>

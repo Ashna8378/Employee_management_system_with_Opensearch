@@ -1,35 +1,43 @@
 import express from 'express';
 import client from '../database.js';
 
-const employee = express.Router(); // Use Router() instead of express()
+const employee = express.Router();
 
-employee.get("/", (req, res) => {
-    res.send("Hello Goldi");
-});
+employee.get("/get", (req, res) => { 
+    const { from = 0, size = 1000, query = "" } = req.query;
 
-employee.get("/get", (req, res) => {  
     client.search({
-        index: 'employee', 
+        index: 'employee',
         body: {
-            query: {
-                match_all: {} // Fetches all documents
-            }
+            from: parseInt(from),
+            size: parseInt(size),
+            sort: [{ "created_at": { "order": "desc" } }],
+            query: query
+                ? {
+                    multi_match: {
+                        query,
+                        fields: ["name", "email"]
+                    }
+                }
+                : { match_all: {} }
         }
     })
     .then(response => {
-        res.json(response.body.hits.hits); // Send employee data
+        res.json(response.body.hits.hits); // Send paginated employee data
     })
     .catch(error => {
+        console.error("Elasticsearch error:", error);
         res.status(500).json({ error: error.message }); // Handle errors
     });
 });
+
 
 employee.get("/get/:id", (req, res) => {
     const { id } = req.params; // Extract ID from URL
 
     client.get({
         index: 'employee',
-        id, // Search by document ID
+        id, 
     })
     .then(response => {
         res.json(response.body._source); // Return the employee data
@@ -40,29 +48,50 @@ employee.get("/get/:id", (req, res) => {
 });
 
 
-// POST: Add a new employee
-employee.post("/post", (req, res) => {  
-    const { name, email, age } = req.body;  // Extract employee data
+employee.post("/post", async (req, res) => {
+    const { name, email, age } = req.body;
 
     if (!name || !email || !age) {
         return res.status(400).json({ error: "Missing required fields: name, email, age" });
     }
 
-    client.index({
-        index: 'employee',  
-        body: {
-            name,
-            email,
-            age
+    try {
+        // Step 1: Check if email already exists
+        const { body: searchResult } = await client.search({
+            index: 'employee',
+            body: {
+                query: {
+                    match: {
+                        email: email
+                    }
+                }
+            }
+        });
+
+        if (searchResult.hits.total.value > 0) {
+            return res.status(409).json({ error: "Email already exists" });
         }
-    })
-    .then(response => {
+
+        // Step 2: Insert if email is unique
+        const response = await client.index({
+            index: 'employee',
+            refresh: true,
+            body: {
+                name,
+                email,
+                age,
+                created_at: new Date().toISOString()
+            }
+        });
+
         res.json({ message: "Employee added successfully", id: response.body._id });
-    })
-    .catch(error => {
+
+    } catch (error) {
+        console.error("Error adding employee:", error);
         res.status(500).json({ error: error.message });
-    });
+    }
 });
+
 
 employee.put("/update/:id", (req, res) => {
     const { id } = req.params; // Extract employee ID from URL parameter
@@ -76,7 +105,8 @@ employee.put("/update/:id", (req, res) => {
     // Update the employee document in the OpenSearch index
     client.update({
         index: 'employee',
-        id, // Document ID
+        refresh: true,
+        id,
         body: {
             doc: { name, email, age } // Fields to update
         }
@@ -96,11 +126,12 @@ employee.put("/update/:id", (req, res) => {
 
 // Delete employee data by ID
 employee.delete("/delete/:id", (req, res) => {
-    const { id } = req.params; // Extract ID from URL
+    const { id } = req.params;
 
     client.delete({
         index: 'employee',
-        id, // Document ID to delete
+        id:id,
+        refresh:true
     })
     .then(response => {
         res.json({

@@ -1,31 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee List</title>
-    <link rel="stylesheet" href="employeeList.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Employee List</title>
+  <link rel="stylesheet" href="./style.css"/>
 </head>
 <body>
-    <div class="container">
-        <h2>Employee List</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Email</th>
-                </tr>
-            </thead>
-            <tbody id="employeeList">
-                <!-- Employees will be added dynamically -->
-            </tbody>
-        </table>
-        <a href="employeeForm.html" class="back-btn">Add Employee</a>
-    </div>
+  <nav>
+    <ul>
+      <li><a href="./employeeList.html">Employee</a></li>
+      <li><a href="./employeeForm.html">Contractor</a></li>
+    </ul>
+  </nav>
 
-    <script src="script.js"></script>
+  <h2>Employee List</h2>
+
+  <div class="top-bar">
+    <input type="text" id="searchInput" placeholder="Search by name or email..." />
+    <a href="./employeeForm.html" class="add-btn">+ Add Employee</a>
+  </div>
+
+  <div id="loader"><span>Loading...</span></div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="employeeList"></tbody>
+  </table>
+
+  <div class="pagination">
+    <button id="prevPage" disabled>Previous</button>
+    <span id="pageInfo"></span>
+    <button id="nextPage">Next</button>
+  </div>
+<script src="./employee.js"></script>
 </body>
 </html>
-
-
