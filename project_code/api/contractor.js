@@ -18,6 +18,10 @@ contractor.get("/get", (req, res) => {
             }
         }
     })
+
+
+
+    
     .then(response => {
         res.json(response.body.hits.hits); // Send contractor data
     })
