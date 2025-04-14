@@ -3,7 +3,6 @@ import client from '../database.js';
 
 const auth = express.Router();
 
-
 auth.post("/login", async (req, res) => {
     const { email, password } = req.body;
     if (!email || !password) {
@@ -30,6 +29,8 @@ auth.post("/login", async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+
+
 
 auth.post("/register", async (req, res) => {
     const { email, password, name } = req.body;

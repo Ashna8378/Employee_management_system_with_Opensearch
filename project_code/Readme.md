@@ -10,3 +10,5 @@
 10. npm i dotenv
 11. touch .env 
 12. cat .env
+
+

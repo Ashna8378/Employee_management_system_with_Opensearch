@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
         row.innerHTML = `
           <td>${emp.name}</td>
-          <td>${emp.age}</td>
+         <td>${emp.age}</td>
           <td>${emp.email}</td>
           <td>
             <button class="edit-btn" onclick="editEmployee('${empData._id}')">Edit</button>
@@ -116,3 +116,6 @@ document.addEventListener("DOMContentLoaded", function () {
     loadEmployees();
   });
   
+
+
+

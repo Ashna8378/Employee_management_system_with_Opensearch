@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 throw new Error("Failed to fetch employee data");
             }
 
+
+
             const employee = await response.json();
             form.elements["name"].value = employee.name;
             form.elements["age"].value = employee.age;
@@ -19,6 +21,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             console.error("Error loading employee data:", error);
         }
     }
+
+    
+
 
     // Submit handler for both add and edit
     form.addEventListener("submit", async (event) => {
@@ -62,3 +67,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 });
+
+
+
+
+
+
+
+
+
+

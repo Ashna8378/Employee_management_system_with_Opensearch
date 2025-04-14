@@ -1,9 +1,7 @@
 import express from 'express';
 import employee from './api/employee.js';
-import contractor from './api/contractor.js';
 import client from './database.js';
 import cors from 'cors'
-import user from './api/user.js'
 import { auth } from './api/auth.js';
 import path from 'path';
 
@@ -26,9 +24,8 @@ app.get('/', (req, res) => {
 
 app.use("/auth", auth)
 
-app.use("/cont",contractor)  
+
 app.use("/emp",employee)
-app.use('/usr', user)
 // Start Server
 
 
@@ -39,6 +36,7 @@ app.listen(PORT, () => {
     .catch(err => console.error("OpenSearch Connection Failed:", err));
 
 });
+
 
 
 
