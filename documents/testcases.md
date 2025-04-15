@@ -103,6 +103,11 @@ Ensure 100,000 records have inserted using a Python script.
 **Testing Outputs**  
 (Log of inserted records and API response)  
 
+![alt text](images/testcase3.png)
+
+---
+
+
 ---
 
 ### **TC 4: Validate Data Insertion in OpenSearch**  
@@ -121,7 +126,8 @@ Verify that OpenSearch correctly stores all 100,000 records.
 **Testing Outputs**  
 (JSON response showing the total records)  
 
-![alt text](image-2.png)
+![alt text](images/testcase_4.png)
+
 ---
 
 ### **TC 5: Implement User Authentication (Login Page)**  
@@ -178,7 +184,16 @@ Ensure user adds new records via the web interface.
 - The API returns a **success response (201 Created)**.  
 
 **Testing Outputs**  
-(Screenshot of API response & UI confirmation)  
+(Screenshot of API response & UI confirmation) 
+
+![alt text](images/testcase7.png)
+
+
+---
+
+![alt text](images/testcase7.2.png)
+
+
 
 ---
 
@@ -197,6 +212,8 @@ Ensure user retrieves stored records.
 
 **Testing Outputs**  
 (JSON response with search results)  
+
+![alt text](images/testcase8.png)
 
 ---
 

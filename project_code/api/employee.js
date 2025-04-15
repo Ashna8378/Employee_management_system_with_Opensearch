@@ -61,9 +61,8 @@ employee.post("/post", async (req, res) => {
             index: 'employee',
             body: {
                 query: {
-                    match: {
-                        email: email
-                    }
+                    term: {
+                    "email.keyword": email                    }
                 }
             }
         });

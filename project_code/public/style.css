@@ -20,6 +20,9 @@ nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
+    font-size: 25px;
+    justify-content: center;
+
 }
 
 nav a {
