@@ -30,7 +30,6 @@ This project sets up **OpenSearch** using **Podman** (a container system), inser
   - **TC 7.4**: Delete Operation  
 - **TC 8**: API Security & Authentication Check  
 - **TC 9**: OpenSearch Query Performance Testing  
-- **NFR Test Cases**  
 
 ---
 
@@ -85,32 +84,7 @@ Check if OpenSearch is functioning properly.
 
 ---
 
-### **TC 3: Insert Bulk Data into OpenSearch**  
-**Scenario**  
-Ensure 100,000 records have inserted using a Python script.  
-
-**Given**  
-- OpenSearch is running.  
-- The Python script has the correct OpenSearch connection details.  
-
-**When**  
-- The script is executed to insert data.  
-
-**Then**  
-- OpenSearch successfully stores all records.  
-- No errors occurs during the insertion process.  
-
-**Testing Outputs**  
-(Log of inserted records and API response)  
-
-![alt text](images/testcase3.png)
-
----
-
-
----
-
-### **TC 4: Validate Data Insertion in OpenSearch**  
+### **TC 3: Validate Data Insertion in OpenSearch**  
 **Scenario**  
 Verify that OpenSearch correctly stores all 100,000 records.  
 
@@ -127,77 +101,106 @@ Verify that OpenSearch correctly stores all 100,000 records.
 (JSON response showing the total records)  
 
 ![alt text](images/testcase_4.png)
+  
+### **TC 4: User Registration Functionality**
+
+**Scenario**
+Ensure new users can register successfully.
+
+**Given**
+User is on the registration page.
+
+**When**
+The user enters valid name, email, and password, and submits the form.
+
+**Then**
+A new user account is created in the database.
+
+The user is redirected to the login page with a success message.
+
+**Testing Outputs** 
+(Screenshot of successful registration confirmation)
+
+![alt text](images/testcase4.png)
 
 ---
 
-### **TC 5: Implement User Authentication (Login Page)**  
-**Scenario**  
-Ensure users must log in before using CRUD operations.  
+### **TC 5: Duplicate Email Registration Handling**
 
-**Given**  
-- A user opens the web interface.  
+**Scenario**
+Prevent registration with an email that already exists.
 
-**When**  
-- The user attempts to access CRUD operations **without logging in**.  
+**Given**
+A user account with a specific email already exists.
 
-**Then**  
-- The system **redirect the user to the login page**.  
+**When**
+A new user attempts to register using the same email.
 
-**Testing Outputs**  
-(Screenshot showing redirection to the login page)  
+**Then**
+The system displays an error message indicating the email is already in use.
 
----
+**Testing Outputs**
 
-### **TC 6: Verify Authentication Flow**  
-**Scenario**  
-Ensure only authenticated users can access CRUD functionalities.  
+(Screenshot of error message for duplicate email)
 
-**Given**  
-- A user exists with valid credentials.  
-
-**When**  
-- The user enters valid credentials and logs in.  
-
-**Then**  
-- The system grant access to CRUD operations.  
-- The API returns a session token.  
-
-**Testing Outputs**  
-(JSON response containing the authentication token)  
+![alt text](images/testcase5.png)
 
 ---
 
-### **TC 7: Test CRUD Operations via Web Interface**  
+### **TC 6: User Login with Invalid Credentials**
 
-#### **TC 7.1: Create Operation**  
+**Scenario**
+
+Prevent login with incorrect credentials.
+
+**Given**
+The user enters an incorrect email or password.
+
+**When**
+The login form is submitted.
+
+**Given**
+The system displays an error message indicating invalid credentials.
+
+**Testing Outputs**
+(Screenshot of login page with error message)
+
+![alt text](images/testcase6.png)
+
+
+#### **TC 7.1: Create Operation (Add Employee)**  
+
 **Scenario**  
-Ensure user adds new records via the web interface.  
+ Ensure a user can add a new employee using the API.
 
 **Given**  
-- The user is logged in.  
+- The backend server is running.
+- The database is connected.
 
 **When**  
-- The user submits a new entry using the web interface.  
-
+- The user sends a POST request with valid employee details (name, email, age).
+- 
 **Then**  
-- The data stored in OpenSearch.  
+- A new employee record is created in the database.
+- The API returns a 201 Created response.
+- The employee appears in the list when fetched.  
 - The API returns a **success response (201 Created)**.  
 
 **Testing Outputs**  
 (Screenshot of API response & UI confirmation) 
 
-![alt text](images/testcase7.png)
 
+
+![alt text](images/testcase7.1.png)
 
 ---
 
 ![alt text](images/testcase7.2.png)
 
-
-
 ---
 
-#### **TC 7.2: Read Operation**  
+#### **TC 8: Read Operation (Get All Employees)**  
+
 **Scenario**  
 Ensure user retrieves stored records.  
 
@@ -217,103 +220,57 @@ Ensure user retrieves stored records.
 
 ---
 
-### **TC 8: API Security & Authentication Check**  
-**Scenario**  
-Ensure that unauthenticated users cannot access the API.  
+### **TC 9: Update Operation (Update Employee by ID)**  
 
+**Scenario**  
+ Ensure a user can update an existing employee’s details using their ID.
 **Given**  
-- The user is **not logged in**.  
+- The backend server is running.
+
+- The database has an employee with a valid ID.
 
 **When**  
-- The user attempts to access an API endpoint directly.  
-
+- The user sends a PUT request to /emp/update/:id with updated data (e.g., name, age).
 **Then**  
-- The API returns **401 Unauthorized**.  
+- The API returns a 200 OK response.
+
+- The employee's details are updated in the database.
+
+- The response contains the updated employee information.
 
 **Testing Outputs**  
-(JSON error response from the API)  
+ (Screenshot of PUT request in Postman showing updated data and success response)
 
----
+ ![alt text](images/testcase9.png)
 
-### **TC NFR 1: System Performance Under Load**  
+
+
+### **TC 10: Delete Operation (Delete Employee by ID)**
+
 **Scenario**  
-Ensure OpenSearch can handle bulk data insertions and searches efficiently.  
+Ensure a user can delete an employee using their ID.
 
 **Given**  
-- OpenSearch is running.  
-- 100,000 records are stored in the database.  
+- The backend server is running.
+- The database contains an employee with a valid ID.
 
 **When**  
-- The system performs bulk read/write operations.  
+- The user sends a DELETE request to /employee/delete/:id.
 
 **Then**  
-- OpenSearch responds within acceptable latency limits (e.g., query response time < 500ms).  
-- No crashes or performance degradation occurs.  
+- The API returns a 200 OK response.
 
-**Testing Outputs**  
-(Response times from load tests)  
+- The employee is removed from the database.
 
----
-
-### **TC NFR 2: API Response Time Validation**  
-**Scenario**  
-Ensure API response times are within an acceptable range.  
-
-**Given**  
-- The backend server is running.  
-- OpenSearch is accessible.  
-
-**When**  
-- API requests for CRUD operations are executed.  
-
-**Then**  
-- API responds within 200-500ms under normal load.  
-- Response time shouldn't exceed 1s, even under peak load.  
-
-**Testing Outputs**  
-(API response times recorded from testing tools)  
-
----
-
-### **TC NFR 3: Security & Access Control**  
-**Scenario**  
-Ensure unauthorized users cannot access API endpoints.  
-
-**Given**  
-- A user is not authenticated.  
-
-**When**  
-- The user attempts to access CRUD API endpoints without logging in.  
-
-**Then**  
-- The API returns **401 Unauthorized**.  
-- Sensitive data will not be exposed in error responses.  
-
-**Testing Outputs**  
-(API logs showing failed access attempts)  
-
----
-
-### **TC NFR 4: Scalability Testing**  
-**Scenario**  
-Ensure the system can scale as data volume increases.  
-
-**Given**  
-- The system contains 100,000 records.  
-- A load balancer is configured.  
-
-**When**  
-- The number of records increases to 1 million or more.  
-
-**Then**  
-- OpenSearch continue functioning without errors.  
-- Performance degradation be minimal.  
-
-**Testing Outputs**  
-(Logs showing system performance under heavy load)  
+- The response confirms successful deletion.
 
 
----
+**Testing Outputs**
+(Screenshot of DELETE request in Postman showing success message)
 
-### **Conclusion**  
-This test plan ensures that **OpenSearch is deployed correctly, data is stored and retrieved accurately, authentication works, and the system performs well under load**.  
+
+
+
+
+
+
