@@ -77,7 +77,7 @@ Check if OpenSearch is functioning properly.
 **Then**  
 - The API returns a `"green"` or `"yellow"` status, indicating that OpenSearch is healthy.  
 
-![alt text](image.png)
+![alt text](images/testcase2.png)
 
 **Testing Outputs**  
 (JSON response from the OpenSearch cluster health check)  
