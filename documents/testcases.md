@@ -60,7 +60,7 @@ Ensure OpenSearch is running inside a Podman container.
 **Testing Outputs**  
 (Screenshot showing the running container)  
 
-![alt text](image-1.png)
+![alt text](images/testcase1.png)
 
 ---
 
@@ -268,6 +268,7 @@ Ensure a user can delete an employee using their ID.
 **Testing Outputs**
 (Screenshot of DELETE request in Postman showing success message)
 
+ ![alt text](images/testcase10.png)
 
 
 
