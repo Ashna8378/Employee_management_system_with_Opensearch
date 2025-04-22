@@ -62,7 +62,7 @@ def generate_bulk_data(num_records):
             counter += 1
 
         seen_emails.add(email)
-        email += "@ashna.com"
+        email += "@gmail.com"
 
         meta_data = {
             "index": {
@@ -104,8 +104,12 @@ def insert_data_into_opensearch(bulk_data):
         print(f"Error occurred: {e}")
 
 def main():
-    bulk_data = generate_bulk_data(10000)
+    bulk_data = generate_bulk_data(20)
     insert_data_into_opensearch(bulk_data)
 
 if __name__ == "__main__":
     main()
+    
+    
+    
+    

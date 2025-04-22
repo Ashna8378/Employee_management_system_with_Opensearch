@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
         employeeList.innerHTML = "<tr><td colspan='4'>No employees found</td></tr>";
         return;
       }
+
+      
   
       data.forEach(empData => {
         const emp = empData._source;

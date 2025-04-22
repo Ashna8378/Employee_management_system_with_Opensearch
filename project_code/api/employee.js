@@ -91,7 +91,6 @@ employee.post("/post", async (req, res) => {
     }
 });
 
-
 employee.put("/update/:id", (req, res) => {
     const { id } = req.params; // Extract employee ID from URL parameter
     const { name, email, age } = req.body; // Extract new data from request body
@@ -142,8 +141,6 @@ employee.delete("/delete/:id", (req, res) => {
         res.status(500).json({ error: error.message }); // Handle errors
     });
 });
-
-
 
 export default employee;
 

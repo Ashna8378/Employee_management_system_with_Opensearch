@@ -30,8 +30,6 @@ auth.post("/login", async (req, res) => {
     }
 });
 
-
-
 auth.post("/register", async (req, res) => {
     const { email, password, name } = req.body;
     if (!email || !password || !name) {
