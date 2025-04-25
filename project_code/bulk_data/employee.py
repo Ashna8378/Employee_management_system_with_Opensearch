@@ -1,7 +1,7 @@
 import subprocess
 import json
 import random
-from datetime import datetime 
+# from datetime import datetime 
 
 # Indian names list (100 each, you can expand if needed)
 first_names = [
@@ -16,6 +16,7 @@ first_names = [
     "Ajay", "Mukul", "Darshan", "Aniket", "Hardik", "Chirag", "Rajat", "Vikram", "Satyam", "Abhishek",
     "Santosh", "Praveen", "Jatin", "Himanshu", "Raghav", "Sanket", "Devansh", "Aman", "Karan", "Rohit"
 ]
+
 
 middle_names = [
     "Kumar", "Narayan", "Prasad", "Chandra", "Bhushan", "Mohan", "Raj", "Shekhar", "Ranjan", "Lal",
@@ -110,6 +111,7 @@ def main():
 if __name__ == "__main__":
     main()
     
+
     
     
     

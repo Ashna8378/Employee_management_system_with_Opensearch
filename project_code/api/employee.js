@@ -99,14 +99,14 @@ employee.put("/update/:id", (req, res) => {
     if (!name || !email || !age) {
         return res.status(400).json({ error: "Missing required fields" });
     }
-
+    const created_at = new Date().toISOString(); 
     // Update the employee document in the OpenSearch index
     client.update({
         index: 'employee',
         refresh: true,
         id,
         body: {
-            doc: { name, email, age } // Fields to update
+            doc: { name, email, age, created_at } // Fields to update
         }
     })
     .then(response => {
