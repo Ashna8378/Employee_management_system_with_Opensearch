@@ -1,9 +1,10 @@
-# **TEST CASES - OpenSearch CRUD System**  
+# **TEST CASES - OpenSearch CRUD System**
+
 | Submitted By | Ashna Dubey |
 | :---- | :---- |
 | Submitted To | Vipin Tripathi |
 | Test Case Version | 1.1 |
-| Reviewer  Name | Manmeet Narrang  |
+| Reviewer  Name | Manmeet Narang  |
 ---
 
 ## **Goal**  
@@ -14,17 +15,14 @@ This project sets up **OpenSearch** using **Podman** (a container system), inser
 ## **Table of Contents**  
 - **TC 1**: Set up OpenSearch in Podman  
 - **TC 2**: Verify OpenSearch Cluster Health  
-- **TC 3**: Insert Bulk Data into OpenSearch  
-- **TC 4**: Validate Data Insertion in OpenSearch  
-- **TC 5**: Implement User Authentication (Login Page)  
-- **TC 6**: Verify Authentication Flow  
-- **TC 7**: Test CRUD Operations via Web Interface  
-  - **TC 7.1**: Create Operation  
-  - **TC 7.2**: Read Operation  
-  - **TC 7.3**: Update Operation  
-  - **TC 7.4**: Delete Operation  
-- **TC 8**: API Security & Authentication Check  
-- **TC 9**: OpenSearch Query Performance Testing  
+- **TC 3**: Validate Data Insertion in OpenSearch  
+- **TC 4**: User Registration Functionality  
+- **TC 5**: Duplicate Email Registration Handling
+- **TC 6**: User Login with Invalid Credentials 
+- **TC 7**: Create Operation (Add Employee)
+- **TC 8**: Read Operation (Get All Employees)
+- **TC 9**: Update Operation (Update Employee by ID) 
+- **TC 10**: Delete Operation (Delete Employee by ID) 
 
 ---
 
@@ -163,7 +161,7 @@ The system displays an error message indicating invalid credentials.
 ![alt text](images/testcase6.png)
 
 
-#### **TC 7.1: Create Operation (Add Employee)**  
+#### **TC 7: Create Operation (Add Employee)**  
 
 **Scenario**  
  Ensure a user can add a new employee using the API.
