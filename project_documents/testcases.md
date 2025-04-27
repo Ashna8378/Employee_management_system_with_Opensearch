@@ -74,7 +74,6 @@ Check if OpenSearch is functioning properly.
 
 **Testing Outputs**  
 (JSON response from the OpenSearch cluster health check)  
-
 ---
 
 ### **TC 3: Validate Data Insertion in OpenSearch**  
