@@ -45,7 +45,7 @@ auth.post("/register", async (req, res) => {
         if (existingUser.body.hits.hits.length > 0) {
             return res.status(400).json({ error: "User already exists" });
         }
-
+        
         await client.index({
             index: 'users',
             body: { name, email, password }
@@ -56,6 +56,10 @@ auth.post("/register", async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
-
 export { auth };
+
+
+
+
+
 

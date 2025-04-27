@@ -32,22 +32,6 @@ employee.get("/get", (req, res) => {
 });
 
 
-employee.get("/get/:id", (req, res) => {
-    const { id } = req.params; // Extract ID from URL
-
-    client.get({
-        index: 'employee',
-        id, 
-    })
-    .then(response => {
-        res.json(response.body._source); // Return the employee data
-    })
-    .catch(error => {
-        res.status(500).json({ error: error.message }); // Handle errors
-    });
-});
-
-
 employee.post("/post", async (req, res) => {
     const { name, email, age } = req.body;
 
@@ -100,6 +84,7 @@ employee.put("/update/:id", (req, res) => {
         return res.status(400).json({ error: "Missing required fields" });
     }
     const created_at = new Date().toISOString(); 
+
     // Update the employee document in the OpenSearch index
     client.update({
         index: 'employee',
@@ -123,6 +108,7 @@ employee.put("/update/:id", (req, res) => {
 
 
 // Delete employee data by ID
+
 employee.delete("/delete/:id", (req, res) => {
     const { id } = req.params;
 
@@ -143,4 +129,8 @@ employee.delete("/delete/:id", (req, res) => {
 });
 
 export default employee;
+
+
+
+
 

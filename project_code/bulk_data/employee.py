@@ -1,9 +1,7 @@
 import subprocess
 import json
 import random
-# from datetime import datetime 
 
-# Indian names list (100 each, you can expand if needed)
 first_names = [
     "Aarav", "Vivaan", "Aditya", "Vihaan", "Krishna", "Arjun", "Aryan", "Sai", "Reyansh", "Dhruv",
     "Ayaan", "Kabir", "Rudra", "Rohan", "Yash", "Kartik", "Manav", "Ishaan", "Ansh", "Harsh",
@@ -16,8 +14,6 @@ first_names = [
     "Ajay", "Mukul", "Darshan", "Aniket", "Hardik", "Chirag", "Rajat", "Vikram", "Satyam", "Abhishek",
     "Santosh", "Praveen", "Jatin", "Himanshu", "Raghav", "Sanket", "Devansh", "Aman", "Karan", "Rohit"
 ]
-
-
 middle_names = [
     "Kumar", "Narayan", "Prasad", "Chandra", "Bhushan", "Mohan", "Raj", "Shekhar", "Ranjan", "Lal",
     "Dev", "Krishna", "Singh", "Vishnu", "Shankar", "Ramesh", "Gopal", "Harish", "Suresh", "Manoj",
@@ -30,7 +26,6 @@ middle_names = [
     "Devendra", "Mukul", "Vivek", "Tejas", "Vijay", "Rohit", "Nitin", "Chirag", "Lalit", "Shubham",
     "Aniket", "Amit", "Mayank", "Tushar", "Kunal", "Ritesh", "Chetan", "Gautam", "Tanmay", "Yash"
 ]
-
 last_names = [
     "Sharma", "Verma", "Singh", "Yadav", "Gupta", "Agarwal", "Mishra", "Tiwari", "Pandey", "Dubey",
     "Choudhary", "Rathore", "Jain", "Reddy", "Naidu", "Khan", "Ansari", "Shaikh", "Siddiqui", "Pathan",
@@ -61,9 +56,9 @@ def generate_bulk_data(num_records):
         while email in seen_emails:
             email = f"{email_base}{counter}"
             counter += 1
-
-        seen_emails.add(email)
+            
         email += "@gmail.com"
+        seen_emails.add(email)
 
         meta_data = {
             "index": {
@@ -71,27 +66,27 @@ def generate_bulk_data(num_records):
                 "_id": i
             }
         }
-
+        
         employee_data = {
             "name": full_name,
             "email": email,
             "age": random.randint(22, 58),
-            # "created_at":  datetime.now().isoformat()
         }
 
         bulk_data += json.dumps(meta_data) + "\n"
         bulk_data += json.dumps(employee_data) + "\n"
 
     return bulk_data
+
 def insert_data_into_opensearch(bulk_data):
-    try:
+    
         curl_command = [
             "curl", "-X", "POST", "https://localhost:9200/_bulk", 
             "-H", "Content-Type: application/x-ndjson", 
             "--data-binary", "@-",
             "--insecure",
             "-u", f"admin:Ashna@123"
-        ]
+        ]   
         
         process = subprocess.Popen(curl_command, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         stdout, stderr = process.communicate(input=bulk_data.encode('utf-8'))
@@ -101,17 +96,18 @@ def insert_data_into_opensearch(bulk_data):
         else:
             print("Data inserted successfully.")
             print(stdout.decode())
-    except Exception as e:
-        print(f"Error occurred: {e}")
-
+  
 def main():
+    
     bulk_data = generate_bulk_data(20)
     insert_data_into_opensearch(bulk_data)
 
-if __name__ == "__main__":
-    main()
-    
+main()
 
-    
+
+
+
+
+
     
     
