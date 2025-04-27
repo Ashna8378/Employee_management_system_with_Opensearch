@@ -128,6 +128,24 @@ employee.delete("/delete/:id", (req, res) => {
     });
 });
 
+employee.get("/get/:id", (req, res) => {
+
+    const { id } = req.params; // Extract ID from URL
+
+    client.get({
+        index: 'employee',
+        id, 
+    })
+    .then(response => {
+        res.json(response.body._source); // Return the employee data
+
+    })
+    .catch(error => {
+        res.status(500).json({ error: error.message }); // Handle errors
+    });
+});
+
+
 export default employee;
 
 

@@ -99,7 +99,7 @@ def insert_data_into_opensearch(bulk_data):
   
 def main():
     
-    bulk_data = generate_bulk_data(20)
+    bulk_data = generate_bulk_data(100000)
     insert_data_into_opensearch(bulk_data)
 
 main()
