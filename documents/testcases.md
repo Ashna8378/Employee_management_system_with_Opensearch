@@ -1,14 +1,9 @@
 # **TEST CASES - OpenSearch CRUD System**  
-
-### **Submitted By**  
-**Ashna Dubey**  
-
-### **Submitted To**  
-**Vipin Tripathi**  
-
-### **Reviewer Name**  
-**Manmeet Narang**  
-
+| Submitted By | Ashna Dubey |
+| :---- | :---- |
+| Submitted To | Vipin Tripathi |
+| Test Case Version | 1.1 |
+| Reviewer  Name | Manmeet Narrang  |
 ---
 
 ## **Goal**  
