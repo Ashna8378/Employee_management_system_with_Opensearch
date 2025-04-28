@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", async () => {
     const form = document.getElementById("employeeForm");
     const urlParams = new URLSearchParams(window.location.search);
@@ -10,8 +11,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (!response.ok) {
                 throw new Error("Failed to fetch employee data");
             }
-
-
 
             const employee = await response.json();
             form.elements["name"].value = employee.name;
@@ -26,6 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     // Submit handler for both add and edit
+    
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
 
