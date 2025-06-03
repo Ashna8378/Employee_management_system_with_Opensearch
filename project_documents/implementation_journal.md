@@ -4,7 +4,7 @@
 | :---- | :---- |
 | Submitted To | Vipin Tripathi |
 | Test Case Version | 1.1 |
-| Reviewer  Name | Manmeet Narrang  |
+| Reviewer  Name | Manmeet Narang  |
 
 **Goal**
 
